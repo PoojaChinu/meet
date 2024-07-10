@@ -31,7 +31,7 @@ So that, I can see the list of events taking place in the city.
 
 **When**: The user opens the app
 
-**Then**: The user should see a list of upcoming events.
+**Then**: The events and event details from all the cities are visible
 
 ### Scenario 2 User should see a list of suggestions when they search for a city.
 
@@ -39,15 +39,15 @@ So that, I can see the list of events taking place in the city.
 
 **When**: The user starts typing in the city textbox
 
-**Then**: The user should be able to see the list of cities that match what they have typed.
+**Then**: The event details about searched city are visible.
 
 ### Scenario 3 User can select a city from the suggested list.
 
 **Given**: The user was typing “Berlin” in the city textbox AND the list of suggested cities is showing
 
-**When**: The user selects a city (e.g., “Berlin, Germany”) from the list;
+**When**: The user selects a city (e.g., “Berlin, Germany”) from the list
 
-**Then**: Their city should be changed to that city (i.e., “Berlin, Germany”) AND the user should receive a list of upcoming events in that city.
+**Then**: The list of upcoming events about a specific city are visible.
 
 ### Feature 2 : Show/Hide Event Details
 
@@ -59,11 +59,11 @@ So that I can handle the information displayed on the screen.
 
 ### Scenario 1 User has clicked to expand show more details of the event
 
-**Given**: User has decided to click on an event to see more details of an event.
+**Given**: User has decided to click on an event to see more details of an event
 
 **When**: User clicks on the button
 
-**Then**: The user is able to see more details about an event.
+**Then**: The event element is expanded and details about the event are visible
 
 ### Feature 3: Specify Number of Events
 
@@ -73,13 +73,27 @@ As a user,
 I should be able to specify number of events
 So that I can quickly find the number of events registered.
 
+### User Story 2
+
+As a user,
+I want to see 32 events by default when I haven't specified a number
+So that I can see all the events at once.
+
 ### Scenario 1 User has displayed on the page a specific number of events;
 
-**Given** : The user selects a city for ex. "Berlin" from the list.
+**Given** : The user selects a city for ex. "Berlin" from the list
 
-**When** : user clicks on the button.
+**When** : The user clicks on the button
 
-**Then** : The user should be able to see specific number of events like 6 at a time.
+**Then** : The specific number of events like 6 at a time are displayed.
+
+### Scenario 2 User has displayed on the page when they have not specified number of events;
+
+**Given** : The user has not specified the number of event
+
+**When** : The user access the app
+
+**Then** : The 34 events are displayed by default.
 
 ### Feature 4 : Use App when offline
 
@@ -95,7 +109,7 @@ So that I can see the information all the time.
 
 **When** : The user clicks on the installed app on the phone
 
-**Then** : The user should be able to see the information on the app even the app is offline.
+**Then** : The information on the app are visible even the app is offline.
 
 ### Feature 5 : Add an App shortcut to the home screen
 
@@ -105,13 +119,13 @@ As a user,
 I should be to add an app shortcut to the home screen
 So that I can access it quickly.
 
-### Scenario 1 User has the app oppen and decides to create a shortcut for home creen.
+### Scenario 1 User has the app open and decides to create a shortcut for home creen.
 
 **Given** : The user clicked on the app shortcut on the home screen
 
 **When** : The user clicks on the button "Create home shortcut"
 
-**Then** : The user should be able to find to find the shortcut of the app.
+**Then** : The shortcut of the app is visible in the home screen.
 
 ### Feature 6 : Display chart visualizationevent details
 
@@ -127,4 +141,4 @@ So that I can see the visual representation of the events which will make user t
 
 **When** : The user clicks on the chart visualisation icon
 
-**Then** : The user should be able to see the graphical representation of attendance trends, ticket prices, or event popularity over time which will help them in making a choice.
+**Then** : The graphical representation of attendance trends, ticket prices, or event popularity over time are displayed which will help them in making a choice.
