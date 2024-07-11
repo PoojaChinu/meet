@@ -1,6 +1,6 @@
 ### Project Description
 
-The Meet app is a progressive web application with a serverless backend, offering offline access to upcoming events in specific cities. Its responsive design ensures seamless display across devices, delivering a superior user experience. Powered by Test-Driven Development, it prioritizes code quality and test coverage for optimal performance.
+To build a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
 
 ### Run the project locally
 
@@ -31,15 +31,15 @@ So that, I can see the list of events taking place in the city.
 
 **When**: The user opens the app
 
-**Then**: The events and event details from all the cities are visible
+**Then**: The events and event details from all the cities are visible.
 
 ### Scenario 2 User should see a list of suggestions when they search for a city.
 
-**Given**:The main page is open
+**Given**: The user starts typing the city in the search bar
 
-**When**: The user starts typing in the city textbox
+**When**: The main page is open
 
-**Then**: The event details about searched city are visible.
+**Then**: The list of suggestions of cities will be displayed.
 
 ### Scenario 3 User can select a city from the suggested list.
 
@@ -64,6 +64,14 @@ So that I can handle the information displayed on the screen.
 **When**: User clicks on the button
 
 **Then**: The event element is expanded and details about the event are visible
+
+### Scenario 2 User has not clikced any event
+
+**Given**: The user is viewing the events list
+
+**When**: When they open the app
+
+**Then**: Then event details should be collapsed by default.
 
 ### Feature 3: Specify Number of Events
 
@@ -93,7 +101,15 @@ So that I can see all the events at once.
 
 **When** : The user access the app
 
-**Then** : The 34 events are displayed by default.
+**Then** : The 32 events are displayed by default.
+
+### Scenario 3 User has typed number of events field so that I can view a list of events
+
+**Given** : The user type a number on number-of-event-field
+
+**When** : The user clicks on the button
+
+**Then** : The list of events with a number typed as a length will be displayed.
 
 ### Feature 4 : Use App when offline
 
