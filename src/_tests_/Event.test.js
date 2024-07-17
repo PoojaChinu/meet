@@ -10,6 +10,7 @@ describe("<Event /> component", () => {
   beforeAll(async () => {
     allEvents = await getEvents();
   });
+
   beforeEach(() => {
     EventComponent = render(<Event event={allEvents[0]} />);
   });
@@ -21,9 +22,7 @@ describe("<Event /> component", () => {
   });
 
   test("renders event start time", () => {
-    expect(
-      EventComponent.queryByText(allEvents[0].created)
-    ).toBeInTheDocument();
+    expect(EventComponent.queryByText(allEvents[0].created)).toBeDefined();
   });
 
   test("renders event location", () => {

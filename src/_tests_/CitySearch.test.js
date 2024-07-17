@@ -2,7 +2,6 @@ import { render, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CitySearch from "../components/CitySearch";
 import { extractLocations, getEvents } from "../api";
-import App from "../App";
 
 describe("<CitySearch /> component", () => {
   let CitySearchComponent;
@@ -30,10 +29,12 @@ describe("<CitySearch /> component", () => {
     expect(suggestionList).toBeInTheDocument();
     expect(suggestionList).toHaveClass("suggestions");
   });
+
   test("updates list of suggestions correctly when user types in city textbox", async () => {
     const user = userEvent.setup();
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
+
     CitySearchComponent.rerender(
       <CitySearch allLocations={allLocations} setInfoAlert={() => {}} />
     );
@@ -58,6 +59,7 @@ describe("<CitySearch /> component", () => {
       expect(suggestionListItems[i].textContent).toBe(suggestions[i]);
     }
   });
+
   test("renders the suggestion text in the textbox upon clicking on the suggestion", async () => {
     const user = userEvent.setup();
     const allEvents = await getEvents();

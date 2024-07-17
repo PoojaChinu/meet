@@ -20,6 +20,6 @@ describe("<EventList /> component", () => {
     expect(EventListComponent.getAllByRole("listitem")).toHaveLength(
       allEvents.length
     );
+    expect(EventListComponent.getAllByRole("listitem")).toHaveLength(35);
   });
-  expect(EventListComponent.getAllByRole("listitem")).toHaveLength(4);
 });
