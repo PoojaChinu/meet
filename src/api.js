@@ -72,9 +72,7 @@ export const getAccessToken = async () => {
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get("code");
     if (!code) {
-      const response = await fetch(
-        "https://20u3baezl6.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
-      );
+      const response = await fetch(""); // TODO: my deployed auth url
       const result = await response.json();
       const { authUrl } = result;
       return (window.location.href = authUrl);
@@ -88,11 +86,7 @@ const getToken = async (code) => {
   try {
     const encodeCode = encodeURIComponent(code);
 
-    const response = await fetch(
-      "https://20u3baezl6.execute-api.eu-central-1.amazonaws.com/dev/api/token" +
-        "/" +
-        encodeCode
-    );
+    const response = await fetch("" + "/" + encodeCode); // TODO: deployed url
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
