@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import { useEffect, useState } from "react";
 import CitySearch from "./components/CitySearch";
 import EventList from "./components/EventList";
 import { extractLocations, getEvents } from "./api";
 import NumberOfEvents from "./components/NumberOfEvents";
-import { getEvents, extractLocations } from "./api";
 import "./App.css";
 
 function App() {
@@ -16,7 +14,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  }, [currentCity]);
+  }, [currentCity, currentNOE]);
 
   const fetchData = async () => {
     const allEvents = await getEvents();
@@ -32,7 +30,7 @@ function App() {
     <div className="App">
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
       <EventList events={events} />
-      <NumberOfEvents />
+      <NumberOfEvents setNumberOfEvents={setCurrentNOE} />
     </div>
   );
 }
