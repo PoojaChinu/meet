@@ -1,10 +1,12 @@
+import { useEffect, useState } from "react";
 import React from "react";
 import { useEffect, useState } from "react";
-import "./App.css";
 import CitySearch from "./components/CitySearch";
 import EventList from "./components/EventList";
+import { extractLocations, getEvents } from "./api";
 import NumberOfEvents from "./components/NumberOfEvents";
 import { getEvents, extractLocations } from "./api";
+import "./App.css";
 
 function App() {
   const [events, setEvents] = useState([]);

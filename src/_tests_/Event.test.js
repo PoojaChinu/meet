@@ -6,7 +6,6 @@ import { getEvents } from "../api";
 describe("<Event /> component", () => {
   let EventComponent;
   let allEvents;
-
   beforeAll(async () => {
     allEvents = await getEvents();
   });
