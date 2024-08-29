@@ -27,6 +27,7 @@ describe("<CitySearch /> component", () => {
     const cityTextBox = CitySearchComponent.queryByRole("textbox");
     await user.click(cityTextBox);
     const suggestionList = CitySearchComponent.queryByRole("list");
+
     expect(suggestionList).toBeInTheDocument();
     expect(suggestionList).toHaveClass("suggestions");
   });

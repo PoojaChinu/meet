@@ -20,7 +20,7 @@ describe("<App /> component", () => {
   });
 
   test("render number of events", () => {
-    expect(AppDOM.querySelector("#number-of-events")).toBeInTheDocument();
+    expect(AppDOM.querySelector("#numberOfEvents")).toBeInTheDocument();
   });
 });
 describe("<App /> integration", () => {

@@ -41,6 +41,7 @@ describe("<Event /> component", () => {
     const button = EventComponent.queryByRole("button");
     await user.click(button, "Show Details");
     const details = EventComponent.container.querySelector(".details");
+
     expect(details).toBeInTheDocument();
   });
 
