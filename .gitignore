@@ -9,3 +9,5 @@ config.json
 
 # testing
 coverage
+
+.DS_Store
