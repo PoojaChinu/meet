@@ -35,7 +35,7 @@ export const getEvents = async () => {
   if (token) {
     removeQuery();
     const url =
-      "https://20u3baezl6.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" +
+      "https://e2krb6jpk4.execute-api.us-east-1.amazonaws.com/dev/api/get-events" +
       "/" +
       token;
     const response = await fetch(url);
@@ -72,7 +72,9 @@ export const getAccessToken = async () => {
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get("code");
     if (!code) {
-      const response = await fetch(""); // TODO: my deployed auth url
+      const response = await fetch(
+        "https://e2krb6jpk4.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url"
+      );
       const result = await response.json();
       const { authUrl } = result;
       return (window.location.href = authUrl);
@@ -86,7 +88,11 @@ const getToken = async (code) => {
   try {
     const encodeCode = encodeURIComponent(code);
 
-    const response = await fetch("" + "/" + encodeCode); // TODO: deployed url
+    const response = await fetch(
+      "https://e2krb6jpk4.execute-api.us-east-1.amazonaws.com/dev/api/token" +
+        "/" +
+        encodeCode
+    ); // TODO: deployed url
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

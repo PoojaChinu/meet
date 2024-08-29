@@ -27,6 +27,7 @@ describe("<CitySearch /> component", () => {
     const cityTextBox = CitySearchComponent.queryByRole("textbox");
     await user.click(cityTextBox);
     const suggestionList = CitySearchComponent.queryByRole("list");
+
     expect(suggestionList).toBeInTheDocument();
     expect(suggestionList).toHaveClass("suggestions");
   });
@@ -83,7 +84,6 @@ describe("<CitySearch /> component", () => {
     expect(cityTextBox).toHaveValue(BerlinGermanySuggestion.textContent);
   });
 });
-
 describe("<CitySearch /> integration", () => {
   test("renders suggestions list when the app is rendered.", async () => {
     const user = userEvent.setup();
@@ -97,10 +97,8 @@ describe("<CitySearch /> integration", () => {
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
 
-    await waitFor(() => {
-      const suggestionListItems =
-        within(CitySearchDOM).queryAllByRole("listitem");
-      expect(suggestionListItems.length).toBe(1);
-    });
+    const suggestionListItems =
+      within(CitySearchDOM).queryAllByRole("listitem");
+    expect(suggestionListItems.length).toBe(allLocations.length + 1);
   });
 });

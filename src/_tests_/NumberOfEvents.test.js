@@ -6,7 +6,12 @@ describe("<NumberOfEvents /> component", () => {
   let NumberOfEventsComponent;
   beforeEach(() => {
     NumberOfEventsComponent = render(
-      <NumberOfEvents setCurrentNOE={() => {}} setErrorAlert={() => {}} />
+      <NumberOfEvents
+        setCurrentNOE={() => {}}
+        setErrorAlert={() => {}}
+        setNumberOfEvents={() => {}}
+        setInfoAlert={() => {}}
+      />
     );
   });
 
@@ -23,6 +28,7 @@ describe("<NumberOfEvents /> component", () => {
     const numberOfEvents = NumberOfEventsComponent.queryByRole("textbox");
     const user = userEvent.setup();
     await user.type(numberOfEvents, "{backspace}{backspace}10");
+
     expect(numberOfEvents).toHaveValue("10");
   });
 });
