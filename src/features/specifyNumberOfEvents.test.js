@@ -30,15 +30,24 @@ defineFeature(feature, (test) => {
       AppDOM = AppComponent.container.firstChild;
       const EventListDOM = AppDOM.querySelector("#event-list");
       NumberOfEventsComponent = render(
-        <NumberOfEvents setCurrentNOE={() => {}} setErrorAlert={() => {}} />,
+        <NumberOfEvents
+          setNumberOfEvents={() => {}}
+          setErrorAlert={() => {}}
+          setInfoAlert={() => {}}
+        />,
         { container: EventListDOM }
       );
       expect(NumberOfEventsComponent).toBeTruthy();
     });
 
-    then(/^\("(.*)"\) events should be displayed by default$/, () => {
-      expect(NumberOfEventsComponent.getByRole("textbox")).toHaveValue("32");
-    });
+    then(
+      /^\("(.*)"\) events should be displayed by default$/,
+      (numberOfEventsToDisplay) => {
+        expect(NumberOfEventsComponent.getByRole("textbox")).toHaveValue(
+          numberOfEventsToDisplay
+        );
+      }
+    );
   });
 
   test("User can change the number of events displayed", ({
@@ -53,29 +62,44 @@ defineFeature(feature, (test) => {
 
     and(
       /^the user has specified the number of events to display as "(.*)"$/,
-      async () => {
+      async (numberOfEventsToDisplay) => {
         const EventListDOM = AppComponent.querySelector("#event-list");
         NumberOfEventsComponent = render(
-          <NumberOfEvents setCurrentNOE={() => {}} setErrorAlert={() => {}} />,
+          <NumberOfEvents
+            setNumberOfEvents={() => {}}
+            setErrorAlert={() => {}}
+            setInfoAlert={() => {}}
+          />,
           { container: EventListDOM }
         );
         const user = userEvent.setup();
         const numberOfEvents = NumberOfEventsComponent.getByRole("textbox");
-        await user.type(numberOfEvents, "{backspace}{backspace}10");
+        await user.type(
+          numberOfEvents,
+          `{backspace}{backspace}${numberOfEventsToDisplay}`
+        );
       }
     );
 
     when(
       /^the user changes the number of events to display to "(.*)"$/,
-      async () => {
+      async (numberOfEventsToDisplay) => {
         const user = userEvent.setup();
         const numberOfEvents = NumberOfEventsComponent.getByRole("textbox");
-        await user.type(numberOfEvents, "{backspace}{backspace}10");
+        await user.type(
+          numberOfEvents,
+          `{backspace}{backspace}${numberOfEventsToDisplay}`
+        );
       }
     );
 
-    then(/^the event list should display "(.*)" events$/, async () => {
-      expect(NumberOfEventsComponent.getByRole("textbox")).toHaveValue("10");
-    });
+    then(
+      /^the event list should display "(.*)" events$/,
+      async (numberOfEventsToDisplay) => {
+        expect(NumberOfEventsComponent.getByRole("textbox")).toHaveValue(
+          numberOfEventsToDisplay
+        );
+      }
+    );
   });
 });
