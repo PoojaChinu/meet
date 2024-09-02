@@ -17,6 +17,11 @@ function App() {
   const [warningAlert, setWarningAlert] = useState("");
 
   useEffect(() => {
+    if (!navigator.onLine) {
+      setWarningAlert("You are offline. Events data may be outdated.");
+    } else {
+      setWarningAlert("");
+    }
     fetchData();
   }, [currentCity, currentNOE]);
 
@@ -37,7 +42,11 @@ function App() {
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
         {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
       </div>
-      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
+      <CitySearch
+        allLocations={allLocations}
+        setCurrentCity={setCurrentCity}
+        setInfoAlert={setInfoAlert}
+      />
       <NumberOfEvents
         setNumberOfEvents={setCurrentNOE}
         setInfoAlert={setInfoAlert}
