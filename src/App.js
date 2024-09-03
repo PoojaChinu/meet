@@ -6,6 +6,7 @@ import { extractLocations, getEvents } from "./api";
 import NumberOfEvents from "./components/NumberOfEvents";
 import { InfoAlert, ErrorAlert, WarningAlert } from "./components/Alert";
 import "./App.css";
+import CityEventsChart from "./components/CityEventsChart";
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -53,6 +54,7 @@ function App() {
         setErrorAlert={setErrorAlert}
         setWarningAlert={setWarningAlert}
       />
+      <CityEventsChart allLocations={allLocations} events={events} />
       <EventList events={events} />
     </div>
   );
