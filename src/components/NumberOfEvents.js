@@ -11,6 +11,9 @@ const NumberOfEvents = ({ setNumberOfEvents, setInfoAlert, setErrorAlert }) => {
     if (isNaN(value) || value <= 0) {
       infoText = "Number of events cannot be negative";
       setErrorAlert(infoText);
+    } else if (value > 32) {
+      infoText = "Number of events cannot be more than 32";
+      setErrorAlert(infoText);
     } else {
       infoText = "";
       setErrorAlert(infoText);
